@@ -1,0 +1,63 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+header{
+    color: white;
+    background-color: #404552;
+    padding: 20px;
+    margin-right: auto;
+    box-sizing: border-box;
+}
+#subject{
+    color: white;
+    background-color: #007acc;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  margin: 0px;
+}
+
+.unit {
+    border: solid;
+    border-color: #007acc;
+  padding: 20px;
+  border-width: 2px;
+  margin-bottom: 20px;
+  border-left: 6px solid #007acc;
+  border-radius: 10px;
+}
+
+.unit h2 {
+  color: #007acc;
+  margin-bottom: 0px;
+}
+
+.unit p {
+    margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+.lecture-list {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.lecture-list li {
+  margin-bottom: 10px;
+}
+
+.lecture-list a {
+  text-decoration: none;
+    color: #444;
+  padding: 10px;
+  display: block;
+  background-color: #e9f4ff;
+  border-radius: 5px;
+}
+.lecture-list a:hover {
+  background-color: #d0eaff;
+}
