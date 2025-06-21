@@ -1,16 +1,81 @@
-body {
-  font-family: "Segoe UI", sans-serif;
-  line-height: 1.6;
-  background-color: #f9f9f9;
-  color: #333;
+
+
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+html,body{
+    height:100%;
+}
+.header{
+    display:flex;
+    height:10vh;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1F2937;
+    min-height: 25px;
+    position:sticky;
+    top:0;
+    z-index: 100;
+}
+.Logo{
+    height: 90%;
+    margin-top: 0.2%;
+    position: relative;
+    left:2%;
+    flex-shrink: 0.25;
+}
+.Logo:hover{
+    cursor:pointer;
+}
+.Logo-img{
+    height:100%;
+}
+.header-links{
+    height: 100%;
+    width:25%;
+    min-width:100px;
+    position: relative;
+    right:2%
+}
+.header-links-ele{
+    height: 100%;
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+    display:inline-block;
+    padding: 8%;
+    padding-top: 8%;
+    position: relative;
 }
 
-header{
+#resc ul{
+    display: none;
+}
+
+#resc:hover ul{
+    display: block;
+    position: absolute;
+    list-style-type: none;
+    top:100%;
+    left: 0;
+    z-index: 1000;
+    background-color: #1F2937;
     color: white;
-    background-color: #404552;
-    padding: 20px;
-    margin-right: auto;
-    box-sizing: border-box;
+    text-align: center;
+}
+#resc li{
+    padding: 1vw;
+}
+
+#resc li:hover{
+    border-bottom: 1px solid white;
+}
+
+.header-links-ele:hover{
+    border-bottom: 2px solid white;
+    cursor:pointer;
 }
 #subject{
     color: white;
