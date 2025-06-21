@@ -254,3 +254,7 @@ hr{
     color:#d6dbe2;
     margin-left: 2%;
 }
+.footer-ul li:hover{
+    cursor: pointer;
+    color: #4ea5d9;
+}
