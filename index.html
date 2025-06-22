@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ScholarBase</title>
     <link rel="stylesheet" href="landing.css">
     <script src="landing.js" defer></script>
 </head>
@@ -30,7 +30,7 @@
         <p class="hero-subtext">Dive into thousands of articles, written and edited by curious minds like yours. Discover, learn, and contribute to a growing base of human knowledge.</p>
         <section>
             <button class="explore">Explore articles</button>
-            <button class="write">Start writing</button>
+            <a href="./editor.html"><button class="write">Start writing</button></a>
         </section>
         <img src="image.png" class="hero-img">
         </section>
@@ -45,11 +45,24 @@
             <button class="nav-button" data-slide="2"></button>
         </section>
     </div>
+    <div class="pop-up">
+        <p>Log In</p>
+        <button class="close-button">×</button>
+        <section class="popup-content">
+        Enter Username
+        <input placeholder="SampleUsername123">
+        <br>
+        Enter Password
+        <input placeholder="Password">
+        <button class="login">Login</button>
+        </section>
+    </div>
     <div class="cards">
-        <div class="card">
-            <img src="Physics.png" class="card-img">
+        <a href="subjectpage.html">
+        <div class="card"><img src="Physics.png" class="card-img">
             <p>Physics</p></div>
-        <div class="card">
+        </a>
+            <div class="card">
             <img src="chem.png" class="card-img">
             <p>
             Chemistry
