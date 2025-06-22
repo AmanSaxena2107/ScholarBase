@@ -13,10 +13,12 @@ html,body{
     justify-content: space-between;
     align-items: center;
     background-color: #1F2937;
-    min-height: 25px;
-    position:sticky;
+    min-height: 50px;
+    position:fixed;
     top:0;
-    z-index: 100;
+    z-index: 1000; /* Increased z-index */
+    border: none; /* Ensure no borders affecting position */
+    margin: 0; /* Explicit margin reset */
 }
 .Logo{
     height: 90%;
@@ -160,7 +162,7 @@ html,body{
 .cards{
     display: flex;
     flex-wrap: wrap;
-    padding:10vw;
+    padding:6vw;
     gap:5vw;
     justify-content: center;
 }
@@ -168,8 +170,8 @@ html,body{
 .card{
     display:inline-block;
     width:15vw;
-    height:35vh;
-    margin-top: 1.5vh;
+    height:30vh;
+    /* margin-top: 1.5vh; */
     background-color: rgba(209, 233, 235,0.2);
     border: 0.75px solid grey;
     border-radius: 2vw;
@@ -177,6 +179,7 @@ html,body{
     box-shadow: #1F2937 0.2vw 0.2vw 0.5vw;
     transition: all 0.15s linear;
     position: relative;
+    overflow: hidden;
 }
 
 .card p{
@@ -200,7 +203,7 @@ html,body{
     background-color: rgb(241, 241, 232);
     box-shadow: none;
     width: 16vw;
-    height: 38vh;
+    height: 32vh;
 
     cursor:pointer;
 }
