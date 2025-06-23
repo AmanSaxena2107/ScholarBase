@@ -5,6 +5,7 @@
 }
 html,body{
     height:100%;
+    scroll-behavior: smooth;
 }
 .header{
     display:flex;
@@ -101,31 +102,29 @@ html,body{
 }
 #subject{
     color: white;
-    background-color: #151f8c;
+    background-color: #0f1766;
   text-align: center;
-  margin-bottom: 20px;
   margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 15px;
 }
 .unit {
   scroll-margin-top: 10vh;
     border: solid;
     border-color: #3052b0;
   padding: 20px;
-  border-width: 2px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border-left: 6px solid #3052b0;
+  border-width: 3px;
+  margin-top: 20px;
+  border-radius: 15px;
+  border-left: 8px solid #3052b0;
 }
 
 .unit h2 {
   color: #3052b0;
-  margin-bottom: 0px;
-}
-
-.unit p {
-    margin-top: 0px;
   margin-bottom: 20px;
 }
+
+
 
 .lecture-list {
   list-style: none;
