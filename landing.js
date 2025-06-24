@@ -18,55 +18,51 @@ overlay.style.cssText = `
 `;
 document.body.appendChild(overlay);
 
-// Function to update popup title
-function updatePopupTitle(title) {
+// // Function to update popup title
+// function updatePopupTitle(title) {
+    
+// }
+
+// Function to show the popup
+function showPopup(title) {
+    overlay.style.display = 'block';
+    popup.style.display = 'flex';
     const popupTitle = document.getElementById('popup-title');
     if (popupTitle) {
         popupTitle.textContent = title;
     }
 }
 
-// Function to show the popup
-function showPopup() {
-    overlay.style.display = 'block';
-    popup.style.display = 'flex';
-    popup.style.position = 'fixed';
-    popup.style.flexDirection = 'column';
-    popup.style.zIndex = '999';
-    popup.style.top = '50%';
-    popup.style.left = '50%';
-    popup.style.transform = 'translate(-50%, -50%)';
-}
-
 // Function to hide the popup
 function hidePopup() {
     popup.style.display = 'none';
-    overlay.style.display = 'none';
+    if(overlay){
+        overlay.style.display = 'none';  // Use the global overlay variable
+    }
     
     // Clear form fields when closing
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
     const messageDiv = document.getElementById('message');
     
+    if (emailInput) emailInput.value = '';
+    if (passwordInput) passwordInput.value = '';
     if (messageDiv) {
         messageDiv.style.display = 'none';
         messageDiv.textContent = '';
         messageDiv.className = 'message';
     }
 }
-
 // Add event listeners to Sign up and Login buttons
 headerLinks.forEach(link => {
     const linkText = link.textContent.trim();
     if (linkText === 'Sign up') {
         link.addEventListener('click', () => {
-            updatePopupTitle('Sign Up');
-            showPopup();
+            showPopup('Sign Up');
         });
     } else if (linkText === 'Login') {
         link.addEventListener('click', () => {
-            updatePopupTitle('Log In');
-            showPopup();
+            showPopup('Log In');
         });
     }
 });
@@ -191,15 +187,8 @@ function showMessage(text, type) {
 }
 
 // Function to close popup and update UI after successful login
-window.closePopupAndUpdateUI = function() {
-    // Close popup
+window.closePopupAndUpdateUI = function(){
     hidePopup();
-    
-    // Remove overlay element completely
-    const overlay = document.querySelector('.popup-overlay');
-    if (overlay) {
-        overlay.remove();
-    }
     
     // Replace Sign up and Login with profile icon
     const headerLinks = document.querySelector('.header-links');

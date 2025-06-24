@@ -10,7 +10,6 @@ import { auth } from './firebase-config.js';
             return;
         }
 
-        // In the signIn function, replace the success block:
 try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
@@ -20,32 +19,14 @@ try {
     // Close popup and update UI
     setTimeout(() => {
         closePopupAndUpdateUI();
-    }, 300); // Wait 1 second to show success message
+    },300);
     
 } catch (error) {
     console.error('Sign in error:', error.message);
     showMessage(`Sign in error: ${error.message}`, 'error');
 }
-
-// In the signUp function, replace the success block:
-try {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    console.log('Signed up as:', user.email);
-    showMessage(`Successfully signed up as ${user.email}`, 'success');
-    
-    // Close popup and update UI
-    setTimeout(() => {
-        closePopupAndUpdateUI();
-    }, 300); // Wait 1 second to show success message
-    
-} catch (error) {
-    console.error('Sign up error:', error.message);
-    showMessage(`Sign up error: ${error.message}`, 'error');
-}
-    };
-
-    window.signUp = async function() {
+};
+window.signUp = async function() {
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
@@ -64,6 +45,10 @@ try {
             const user = userCredential.user;
             console.log('Signed up as:', user.email);
             showMessage(`Successfully signed up as ${user.email}`, 'success');
+            // Close popup and update UI
+    setTimeout(() => {
+        closePopupAndUpdateUI();
+    },300);
         } catch (error) {
             console.error('Sign up error:', error.message);
             showMessage(`Sign up error: ${error.message}`, 'error');

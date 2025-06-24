@@ -161,6 +161,7 @@ html,body{
 .pop-up{
     gap:0.5vw;
     display: none;
+    flex-direction: column;
     position: fixed;
     top:20vh;
     left: 35vw;
@@ -171,7 +172,7 @@ html,body{
     border-radius: 2vw;
     overflow: hidden;
     width: 25vw;
-    z-index: 100;
+    z-index: 1000;
     /* padding: 2vw; */
 }
 
@@ -389,7 +390,7 @@ hr{
     list-style-type: none;
     top: 100%;
     right: 0;
-    z-index: 1000;
+    z-index: 1001;
     background-color: #1F2937;
     color: white;
     text-align: center;
