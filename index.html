@@ -46,17 +46,21 @@
         </section>
     </div>
     <div class="pop-up">
-        <p>Log In</p>
-        <button class="close-button">×</button>
-        <section class="popup-content">
-        Enter Username
-        <input placeholder="SampleUsername123">
+    <p id="popup-title">Log In</p>
+    <button class="close-button">×</button>
+    <section class="popup-content">
+        <div id="message" class="message"></div>
+        Enter Email
+        <input placeholder="example@email.com" id="email" type="email">
         <br>
         Enter Password
-        <input placeholder="Password">
-        <button class="login">Login</button>
-        </section>
-    </div>
+        <input placeholder="Password" id="password" type="password">
+        <div class="popup-buttons">
+            <button class="login" onclick="signIn()">Login</button>
+            <button class="signup" onclick="signUp()">Sign Up</button>
+        </div>
+    </section>
+</div>
     <div class="cards">
         <a href="subjectpage.html">
         <div class="card"><img src="Physics.png" class="card-img">
@@ -125,5 +129,7 @@
             <p> ©ScholarBase 2025. All rights reserved. </p>
         </div>
     </div>
+     <script type="module" src="./firebase-config.js"></script>
+    <script type="module" src="./app.js"></script>
 </body>
 </html>

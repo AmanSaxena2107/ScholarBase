@@ -1,37 +1,82 @@
-const previewBtn = document.querySelector("#preview-button");
-const output = document.querySelector(".output");
-const previewContent = document.querySelector('.preview-content'); // select content box
-const closeButton = document.getElementById('close-preview');
+import { auth } from './firebase-config.js';
+    import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js';
 
-const toolbarOptions = [
-  [{ font: [] }],
-  [{ header: [1, 2, 3] }],
-  ["bold", "italic", "underline", "strike"],
-  [{ color: [] }, { background: [] }],
-  [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
-  ["blockquote", "code-block"],
-  ["link", "image", "video"],
-  [{ align: [] }],
-];
+    window.signIn = async function() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-const quill = new Quill("#editor-container", {
-  theme: "snow",
-  modules: {
-    toolbar: toolbarOptions,
-  },
-});
+        if (!email || !password) {
+            showMessage('Please fill in both email and password', 'error');
+            return;
+        }
 
-previewBtn.addEventListener("click", () => {
-  const content = quill.root.innerHTML;
-  output.classList.add("active");
+        // In the signIn function, replace the success block:
+try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log('Signed in as:', user.email);
+    showMessage(`Successfully signed in as ${user.email}`, 'success');
+    
+    // Close popup and update UI
+    setTimeout(() => {
+        closePopupAndUpdateUI();
+    }, 300); // Wait 1 second to show success message
+    
+} catch (error) {
+    console.error('Sign in error:', error.message);
+    showMessage(`Sign in error: ${error.message}`, 'error');
+}
 
-  setTimeout(() => {
-    previewContent.textContent = content; // ← shows HTML as text
-  }, 200);
-});
+// In the signUp function, replace the success block:
+try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log('Signed up as:', user.email);
+    showMessage(`Successfully signed up as ${user.email}`, 'success');
+    
+    // Close popup and update UI
+    setTimeout(() => {
+        closePopupAndUpdateUI();
+    }, 300); // Wait 1 second to show success message
+    
+} catch (error) {
+    console.error('Sign up error:', error.message);
+    showMessage(`Sign up error: ${error.message}`, 'error');
+}
+    };
 
+    window.signUp = async function() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-closeButton.addEventListener('click', () => {
-  output.classList.remove('active');
-  previewContent.innerHTML = ''; // optional: clear the content when closing
-});
+        if (!email || !password) {
+            showMessage('Please fill in both email and password', 'error');
+            return;
+        }
+
+        if (password.length < 6) {
+            showMessage('Password should be at least 6 characters long', 'error');
+            return;
+        }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+            console.log('Signed up as:', user.email);
+            showMessage(`Successfully signed up as ${user.email}`, 'success');
+        } catch (error) {
+            console.error('Sign up error:', error.message);
+            showMessage(`Sign up error: ${error.message}`, 'error');
+        }
+    };
+
+    function showMessage(text, type) {
+        const messageDiv = document.getElementById('message');
+        messageDiv.textContent = text;
+        messageDiv.className = `message ${type}`;
+        messageDiv.style.display = 'block';
+        
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 5000);
+    }
