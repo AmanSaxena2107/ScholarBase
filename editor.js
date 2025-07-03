@@ -30,7 +30,6 @@ previewBtn.addEventListener("click", () => {
   }, 200);
 });
 
-
 closeButton.addEventListener('click', () => {
   output.classList.remove('active');
   previewContent.innerHTML = ''; // optional: clear the content when closing

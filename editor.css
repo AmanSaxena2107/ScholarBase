@@ -187,3 +187,207 @@ html, body {
 .output img {
     width: 100%;
 }
+
+.form-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 12vh;
+  padding: 2rem 1rem 3rem 1rem;
+}
+.form-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #1F2937;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30, 60, 120, 0.08);
+  padding: 1.2rem 1rem 1rem 1rem;
+  position: relative;
+}
+.form-group label {
+  font-weight: 600;
+  color: #3052b0;
+  margin-bottom: 0.5rem;
+}
+.form-group label span {
+  color: #e53935;
+  margin-left: 2px;
+}
+.form-group input, .form-group textarea {
+  border: 1.5px solid #b9cbd8;
+  border-radius: 6px;
+  padding: 0.7rem 0.9rem;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  outline: none;
+  background: #f8fafc;
+  color: #1d2635;
+  transition: border-color 0.2s;
+}
+.form-group input:focus, .form-group textarea:focus {
+  border-color: #4ea5d9;
+  background: #fff;
+}
+.error {
+  color: #e53935;
+  font-size: 0.95em;
+  min-height: 1.2em;
+}
+.sections-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30, 60, 120, 0.08);
+  padding: 1.5rem 1rem 1rem 1rem;
+  margin-bottom: 2rem;
+}
+.sections-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.sections-header h2 {
+  color: #3052b0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.add-section-btn {
+  background: #4ea5d9;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-section-btn:hover {
+  background: #3052b0;
+}
+.section-card {
+  background: #f8fafc;
+  border: 1.5px solid #b9cbd8;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(30, 60, 120, 0.06);
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+.section-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.section-fields label {
+  font-weight: 500;
+  color: #3052b0;
+  margin-bottom: 0.3rem;
+}
+.section-fields input, .section-fields textarea {
+  width: 100%;
+  border: 1.5px solid #b9cbd8;
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #1d2635;
+  margin-bottom: 0.2rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.section-fields input:focus, .section-fields textarea:focus {
+  border-color: #4ea5d9;
+}
+.remove-section-btn {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  transition: background 0.2s;
+}
+.remove-section-btn:hover {
+  background: #b71c1c;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+.generate-btn {
+  background: #43a047;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(30, 60, 120, 0.08);
+  transition: background 0.2s;
+}
+.generate-btn:hover {
+  background: #388e3c;
+}
+.success-message {
+  color: #43a047;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  text-align: right;
+  min-height: 1.2em;
+}
+.json-preview-card {
+  background: #23272e;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(30, 60, 120, 0.10);
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  margin-top: 2.5rem;
+  color: #fff;
+  overflow-x: auto;
+}
+.json-preview-card h2 {
+  color: #4ea5d9;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.json-preview {
+  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
+  font-size: 1.08rem;
+  background: transparent;
+  color: #e3e3e3;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+@media (max-width: 800px) {
+  .form-main {
+    padding: 1rem 0.2rem 2rem 0.2rem;
+  }
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .sections-card, .json-preview-card {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+}
