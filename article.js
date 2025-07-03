@@ -40,15 +40,37 @@ function loadArticle(articleData){  // Fixed: renamed parameter
         const pre= document.createElement('pre');
         
         if (section.type == 'video') {
+            // Parse the source and type from the string, if present
+            let videoSrc = section.source;
+            let videoType = '';
+
+            // If the source contains 'type=', split it out
+            if (videoSrc.includes('type=')) {
+                // Example: "https://www.w3schools.com/html/mov_bbb.mp4 type='video/mp4'"
+                const parts = videoSrc.split('type=');
+                videoSrc = parts[0].trim();
+                videoType = parts[1].replace(/['"]/g, '').trim();
+            }
+
             const sectContent = document.createElement('video');
-            sectContent.src = section.source;
+            sectContent.controls = true; // Add controls for usability
             sectContent.className = 'subbody';
+
+            const source = document.createElement('source');
+            source.src = videoSrc;
+            if (videoType) {
+                source.type = videoType;
+            }
+            sectContent.appendChild(source);
+
+            // Fallback text for browsers that do not support the video tag
+            sectContent.innerHTML += "Your browser does not support the video tag.";
 
             pre.appendChild(sectContent);
         }
         else if (section.type == 'image') {
             const sectContent = document.createElement('img');
-            sectContent.src = section.source;
+            
             sectContent.className = 'subbody';
             sectContent.alt = section.title;  // Added alt text for accessibility
             pre.appendChild(sectContent);

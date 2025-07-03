@@ -218,8 +218,14 @@ details[open] summary::before{
     background-color: #ffffff;
     border-top: 1px solid #e9ecef;
     line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
 }
 
+.subbody{
+    display: flex;
+    flex-wrap: wrap;
+}
 /* Adjust the arrow positioning for better alignment */
 .subsection summary::before {
     left: 15px;
