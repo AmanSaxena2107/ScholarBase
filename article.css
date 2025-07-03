@@ -1,27 +1,23 @@
 main{
     font-family: 'serif', Times, 'Times New Roman';
 }
-#topic{
+.article-title{
     background-color: blue;
     padding: 10px;
     color: white;
     text-align: center;
     font-size: 25px; 
 }
-.heading{
+.subhead{
     background-color: white;
     border-radius: 5px;
     border-left: 5px solid rgb(50, 50, 255);
     padding: 10px;
     margin-top: 20px;
     box-shadow: 0px 5px 10px rgb(110, 110, 110);
-}
-.heading pre{
     font-size: large;
 }
-.heading h3{
-    margin-left: 175px;
-}
+
 #iframe{
     background-color: white;
     border-radius: 5px;
@@ -33,7 +29,7 @@ main{
     }
 summary{
     list-style: none;
-    position:relative;
+    position: relative;
     padding-left: 40px;
     line-height: 1.2;
     font-size: 25px;
@@ -43,16 +39,62 @@ summary{
 summary::before{
     content: "";
     position: absolute;
-    left:14px;
+    left: 15px;
     top: 50%;
-    transform: translateY(-40%) rotate(0deg);
+    transform: translateY(-50%) rotate(0deg);
     transition: transform 0.3s ease;
     width: 0;
     height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 13px solid black;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 12px solid #495057;
 }
 details[open] summary::before{
     transform: translateY(-50%) rotate(90deg);
+}
+
+/* Fix for the overlap issue and improve styling */
+.subsection {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subsection summary {
+    margin-left: 0;
+    padding: 15px 20px 15px 40px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-left: 4px solid rgb(50, 50, 255);
+    margin: 0;
+    transition: all 0.3s ease;
+}
+
+.subsection summary:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    transform: translateX(2px);
+}
+
+
+
+.subsection pre {
+    margin: 0;
+    padding: 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #e9ecef;
+    line-height: 1.6;
+}
+
+/* Adjust the arrow positioning for better alignment */
+.subsection summary::before {
+    left: 15px;
+    border-left-color: #495057;
+}
+
+.subsection[open] summary::before {
+    border-left-color: #495057;
+}
+
+.subsection{
+    margin-top: 20px;
 }
