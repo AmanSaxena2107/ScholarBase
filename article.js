@@ -68,3 +68,38 @@ window.addEventListener('load', () => {
     const { subject, articleId } = getUrlParameters();    
     loadArticleFromFirebase(subject, articleId);
 });
+
+window.addEventListener('DOMContentLoaded', () => {
+    const loggedIn = localStorage.getItem("loggedIn") === "true";
+
+    if (loggedIn) {
+        const headerLinks = document.querySelector('.header-links');
+        if (!headerLinks) return;
+
+        // Check if profile icon already exists to avoid duplicates
+        const existingProfileIcon = document.getElementById('profile-icon');
+        if (existingProfileIcon) return;
+
+        // Remove Sign up and Login if they exist
+        const headerLinksElements = headerLinks.querySelectorAll('.header-links-ele');
+        headerLinksElements.forEach(link => {
+            const linkText = link.textContent.trim();
+            if (linkText === 'Sign up' || linkText === 'Login') {
+                link.remove();
+            }
+        });
+
+        // Add profile icon with dropdown
+        const profileIcon = document.createElement('li');
+        profileIcon.className = 'header-links-ele';
+        profileIcon.id = 'profile-icon';
+        profileIcon.innerHTML = `
+            👤 Profile
+            <ul>
+                <li onclick="logout()">Logout</li>
+                <li onclick="showProfile()">Profile</li>
+            </ul>
+        `;
+        headerLinks.appendChild(profileIcon);
+    }
+});

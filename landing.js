@@ -187,29 +187,35 @@ function showMessage(text, type) {
 }
 
 // Function to close popup and update UI after successful login
+// Function to close popup and update UI after successful login
+// Function to close popup and update UI after successful login
 window.closePopupAndUpdateUI = function(){
     hidePopup();
     
     // Replace Sign up and Login with profile icon
     const headerLinks = document.querySelector('.header-links');
     if (headerLinks) {
-        // Remove existing Sign up and Login elements
-        const signupLink = Array.from(headerLinks.children).find(link => 
-            link.textContent.trim() === 'Sign up'
-        );
-        const loginLink = Array.from(headerLinks.children).find(link => 
-            link.textContent.trim() === 'Login'
-        );
+        // Check if profile icon already exists to prevent duplicates
+        const existingProfileIcon = document.getElementById('profile-icon');
+        if (existingProfileIcon) {
+            return; // Profile icon already exists, don't create another one
+        }
         
-        if (signupLink) signupLink.remove();
-        if (loginLink) loginLink.remove();
+        // Find and remove existing Sign up and Login elements
+        const headerLinksElements = headerLinks.querySelectorAll('.header-links-ele');
+        headerLinksElements.forEach(link => {
+            const linkText = link.textContent.trim();
+            if (linkText === 'Sign up' || linkText === 'Login') {
+                link.remove();
+            }
+        });
         
-        // Add profile icon
+        // Add profile icon with proper structure
         const profileIcon = document.createElement('li');
         profileIcon.className = 'header-links-ele';
         profileIcon.id = 'profile-icon';
         profileIcon.innerHTML = `
-            <img src="user.jpg" alt="user" class="header-links-ele">
+            👤 Profile
             <ul>
                 <li onclick="logout()">Logout</li>
                 <li onclick="showProfile()">Profile</li>
@@ -220,9 +226,63 @@ window.closePopupAndUpdateUI = function(){
 }
 
 // Logout function
+// Logout function - Fixed version
 window.logout = function() {
-    // You can add Firebase signOut logic here if needed
-    location.reload(); // Simple reload to reset the page
+    // Check if Firebase is available (loaded via CDN script tag)
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+        firebase.auth().signOut()
+            .then(() => {
+                console.log("User signed out successfully");
+                // Set logged in status to false
+                localStorage.setItem("loggedIn", "false");
+                
+                // Reset the header to show Sign up and Login buttons
+                resetHeaderToLoginState();
+                
+                // Optionally show a success message
+                showMessage("Successfully logged out!", "success");
+            })
+            .catch((error) => {
+                console.error("Error signing out:", error);
+                showMessage("Error signing out. Please try again.", "error");
+            });
+    } else {
+        // Fallback if Firebase is not available
+        console.log("Firebase not available, performing local logout");
+        localStorage.setItem("loggedIn", "false");
+        resetHeaderToLoginState();
+        showMessage("Successfully logged out!", "success");
+    }
+}
+
+// Function to reset header back to login state
+function resetHeaderToLoginState() {
+    const headerLinks = document.querySelector('.header-links');
+    if (headerLinks) {
+        // Remove profile icon if it exists
+        const profileIcon = document.getElementById('profile-icon');
+        if (profileIcon) {
+            profileIcon.remove();
+        }
+        
+        // Add back Sign up and Login buttons
+        const signUpLink = document.createElement('li');
+        signUpLink.className = 'header-links-ele';
+        signUpLink.textContent = 'Sign up';
+        signUpLink.addEventListener('click', () => {
+            showPopup('Sign Up');
+        });
+        
+        const loginLink = document.createElement('li');
+        loginLink.className = 'header-links-ele';
+        loginLink.textContent = 'Login';
+        loginLink.addEventListener('click', () => {
+            showPopup('Log In');
+        });
+        
+        headerLinks.appendChild(signUpLink);
+        headerLinks.appendChild(loginLink);
+    }
 }
 
 // Profile function (placeholder)

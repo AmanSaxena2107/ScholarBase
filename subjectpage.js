@@ -42,10 +42,30 @@ async function loadUnits(subject){
 
 // MADE THIS FUNCTION ASYNC AND ADDED AWAIT
 async function displayUnits(subject){
-    const UnitHash = await loadUnits(subject); // ADDED AWAIT HERE
-    const main = document.querySelector('.main');
+    const UnitHash = await loadUnits(subject);
     
+    // Sidebar generation (simple version)
+    let sidebar = document.querySelector('.sidebar');
+    if (!sidebar) {
+        sidebar = document.createElement('div');
+        sidebar.className = 'sidebar';
+        const main = document.querySelector('.main');
+        main.parentNode.insertBefore(sidebar, main);
+    } else {
+        sidebar.innerHTML = '';
+    }
+    // For each unit, add a link to its section
+    Object.keys(UnitHash).sort((a, b) => Number(a) - Number(b)).forEach(unitKey => {
+        const unit = UnitHash[unitKey];
+        if (!unit || unit.length === 0) return;
+        const link = document.createElement('a');
+        link.href = `#unit${unitKey}`;
+        link.textContent = unit[0].unit || `Unit ${unitKey}`;
+        sidebar.appendChild(link);
+    });
+
     // Clear existing content first
+    const main = document.querySelector('.main');
     main.innerHTML = '<div id="subject"></div>';
     
     // Add subject title
@@ -54,36 +74,26 @@ async function displayUnits(subject){
     subjectTitle.textContent = subject.charAt(0).toUpperCase() + subject.slice(1);
     subjectDiv.appendChild(subjectTitle);
     
-    // FIXED THE FOR LOOP - added 'let' keyword
+    // Render each unit section
     for (let unitKey in UnitHash){
         const unit = UnitHash[unitKey];
-        
-        // Skip if unit is empty or undefined
         if (!unit || unit.length === 0) continue;
-        
         const unitArea = document.createElement('div');
         unitArea.className = 'unit-area';
         unitArea.id = `unit${unitKey}`;
-        
         const unitTitle = document.createElement('h2');
         unitTitle.textContent = unit[0].unit;
         unitArea.appendChild(unitTitle);
-        
         const lectureList = document.createElement('ul');
         lectureList.className = 'lecture-list';
-        
         for(let article of unit){
             const articleEle = document.createElement('li');
             const articleLink = document.createElement('a');
-            // const currentUrl = new URL(window.location.href);
-            // currentUrl.searchParams.set('articleId', article.id); // Use the document ID
             articleLink.href = 'article.html?subject='+subject+'&articleId='+article.id;
-            articleLink.textContent = article.title; // Changed from empty string to '#'
             articleLink.textContent = article.title;
             articleEle.appendChild(articleLink);
             lectureList.appendChild(articleEle);
         }
-        
         unitArea.appendChild(lectureList);
         main.appendChild(unitArea);
     }
@@ -100,3 +110,38 @@ window.addEventListener('load', async () => {
         console.error('No subject parameter found in URL');
     }
 })
+
+window.addEventListener('DOMContentLoaded', () => {
+    const loggedIn = localStorage.getItem("loggedIn") === "true";
+
+    if (loggedIn) {
+        const headerLinks = document.querySelector('.header-links');
+        if (!headerLinks) return;
+
+        // Check if profile icon already exists to avoid duplicates
+        const existingProfileIcon = document.getElementById('profile-icon');
+        if (existingProfileIcon) return;
+
+        // Remove Sign up and Login if they exist
+        const headerLinksElements = headerLinks.querySelectorAll('.header-links-ele');
+        headerLinksElements.forEach(link => {
+            const linkText = link.textContent.trim();
+            if (linkText === 'Sign up' || linkText === 'Login') {
+                link.remove();
+            }
+        });
+
+        // Add profile icon with dropdown
+        const profileIcon = document.createElement('li');
+        profileIcon.className = 'header-links-ele';
+        profileIcon.id = 'profile-icon';
+        profileIcon.innerHTML = `
+            👤 Profile
+            <ul>
+                <li onclick="logout()">Logout</li>
+                <li onclick="showProfile()">Profile</li>
+            </ul>
+        `;
+        headerLinks.appendChild(profileIcon);
+    }
+});
