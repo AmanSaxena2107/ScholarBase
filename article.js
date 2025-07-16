@@ -72,6 +72,8 @@ function loadArticle(articleData){  // Fixed: renamed parameter
             const sectContent = document.createElement('img');
             
             sectContent.className = 'subbody';
+            sectContent.src=section.src;
+            sectContent.style.maxHeight="40vh";
             sectContent.alt = section.title;  // Added alt text for accessibility
             pre.appendChild(sectContent);
         }

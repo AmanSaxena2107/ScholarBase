@@ -1,16 +1,101 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+}
+
+body{
+    margin-left: 15px;
+}
+
+div{
+    display: flex;
+    flex-direction: column;
+}
+
 label{
-    font-size: large;
-}
-input{
-    border-radius: 100px;
-    width:40vw;
-    height: 8vh;
-}
-button{
-    font-size: 20px;
-    color:blue;
-    background-color: transparent;
-    border:2px solid grey;
-    border-radius: 40px;
+    font-size: 1.3em;
+    font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
+}
+
+.data{
+    max-width: 50vw;
+    margin-left: 0.5vw;
+    padding: 2vh;
+    border-radius: 10vw;
+    border: 1px solid rgb(93, 92, 92);
+}
+
+button{
+    padding: 1vw;
+    max-width: 13vw;
+    background-color: aqua;
+    border: 1px solid blue;
+    border-radius: 4vw;
+    text-align: start;
+
+}
+
+.submit{
+    padding: 1vw;
+    text-align: center;
+    background-color: blue;
+}
+
+.sub-tit{
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 8px 10px 2px 10px;
+    color: #333;
+    margin-top: 1.5vh;
+}
+
+.sub-data{
+    max-width: 35vw;
+    margin-left: 0.5vw;
+    padding: 1.25vh;
+    border-radius: 10vw;
+    border: 1px solid rgb(93, 92, 92);
+    margin-bottom: 1vh;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cont-area {
+    width: 90%;
+    min-height: 80px;
+    margin-left: 0.5vw;
+    padding: 1.25vh;
+    border-radius: 1vw;
+    border: 1px solid rgb(93, 92, 92);
+    margin-bottom: 2vh;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    resize: vertical;
+}
+
+.text-section, .img-section, .video-section {
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+    background-color: #e0f7fa;
+    color: #005b7f;
+    border: 1px solid #00bcd4;
+    border-radius: 2vw;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.text-section:hover, .img-section:hover, .video-section:hover {
+    background-color: #b2ebf2;
+    color: #00363a;
+}
+
+#Title, #Unit {
+    margin-bottom: 1vh;
+}
+
+#create-form > * {
+    margin-bottom: 0.5vh;
 }

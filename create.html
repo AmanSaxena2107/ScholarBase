@@ -7,22 +7,26 @@
     <link rel="stylesheet" href="./create.css">
 </head>
 <body>
-    <div id="form">
-        <label for="subject">Subject:</label>
-        <input id="subject" name="subject" type="text" placeholder="e.g. Physics, Chemistry, Mathematics" />
-        <br><br>
-        <label for="unit">Unit:</label>
-        <input id="unit" name="unit" type="text" placeholder="e.g. Unit 1, Thermodynamics" />
-        <br><br>
-        <label for="title">Title:</label>
-        <input id="title" name="title" type="text" placeholder="e.g. Laws of Motion" />
-        <br><br>
-        <label for="articleId">Article ID:</label>
-        <input id="articleId" name="articleId" type="text" placeholder="e.g. phy-u1-001" />
-        <br><br>
-        //add section
-        <br><br>
-        <button id="add-text-section">+ Add Text</button>
+    <h1>Create an article</h1>
+    <div id="create-form">
+        <label for="Title">Article Title</label>
+        <input name="Title" id="Title" placeholder="Chapter Name" class="data" >
+        <label name="Subject" for="Subject">Subject: </label>
+        <select name="Subject" id="Subject" class="data">
+            <option value="Physics">Physics</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Maths">Mathematics</option>
+            <option value="Electronics">Electronics</option>
+            <option value="CS">Computer Science</option>
+        </select>
+        <label for="Unit">Unit Name</label>
+        <input name="Unit" id="Unit" placeholder="Unit Name" class="data" >
+        <button class="text-section" onclick="genTextSect()">⟪+⟫ Add a text section</button>
+        <button class="img-section" onclick="genImgSect()">⟪+⟫ Add an Image section</button>
+        <button class="video-section" onclick="genVidSect()">⟪+⟫ Add a video section</button>
+        <button type="submit" class="submit">Submit</button>
+    <!-- </form> -->
     </div>
+    <script src="create.js"></script>
 </body>
 </html>
