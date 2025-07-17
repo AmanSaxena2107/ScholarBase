@@ -1,3 +1,112 @@
+<<<<<<< HEAD
+function genTextSect() {
+    const wrapper = document.createElement("div");
+    wrapper.className = "subsection-wrapper";
+
+    const titleLabel = document.createElement("label");
+    titleLabel.textContent = "Subsection Title";
+    titleLabel.htmlFor = "sub-tit";
+    titleLabel.className = "sub-tit";
+
+    const titleInput = document.createElement("input");
+    titleInput.className = "sub-data";
+    titleInput.name = "sub-tit";
+    titleInput.id = "sub-tit";
+    titleInput.placeholder = "Subsection Title";
+
+    const descLabel = document.createElement("label");
+    descLabel.textContent = "Subsection Content";
+    descLabel.htmlFor = "sub-desc";
+    descLabel.className = "sub-tit";
+
+    const descContent = document.createElement("textarea");
+    descContent.name = "sub-desc";
+    descContent.id = "sub-desc";
+    descContent.className = "cont-area";
+    descContent.placeholder = "Subsection Content";
+
+    wrapper.appendChild(titleLabel);
+    wrapper.appendChild(titleInput);
+    wrapper.appendChild(descLabel);
+    wrapper.appendChild(descContent);
+
+    const container = document.getElementById("content-area");
+    container.appendChild(wrapper);
+    console.log("text section added");
+}
+
+function genImgSect() {
+    const wrapper = document.createElement("div");
+    wrapper.className = "subsection-wrapper";
+
+    const titleLabel = document.createElement("label");
+    titleLabel.textContent = "Image Title";
+    titleLabel.htmlFor = "img-tit";
+    titleLabel.className = "sub-tit";
+
+    const titleInput = document.createElement("input");
+    titleInput.className = "sub-data";
+    titleInput.name = "img-tit";
+    titleInput.id = "img-tit";
+    titleInput.placeholder = "Image Title";
+
+    const linkLabel = document.createElement("label");
+    linkLabel.textContent = "Image Link";
+    linkLabel.htmlFor = "img-link";
+    linkLabel.className = "sub-tit";
+
+    const linkInput = document.createElement("input");
+    linkInput.className = "sub-data";
+    linkInput.name = "img-link";
+    linkInput.id = "img-link";
+    linkInput.placeholder = "Image Link";
+
+    wrapper.appendChild(titleLabel);
+    wrapper.appendChild(titleInput);
+    wrapper.appendChild(linkLabel);
+    wrapper.appendChild(linkInput);
+
+    const container = document.getElementById("content-area");
+    container.appendChild(wrapper);
+    console.log("image section added");
+}
+
+function genVidSect() {
+    const wrapper = document.createElement("div");
+    wrapper.className = "subsection-wrapper";
+
+    const titleLabel = document.createElement("label");
+    titleLabel.textContent = "Video Title";
+    titleLabel.htmlFor = "vid-tit";
+    titleLabel.className = "sub-tit";
+
+    const titleInput = document.createElement("input");
+    titleInput.className = "sub-data";
+    titleInput.name = "vid-tit";
+    titleInput.id = "vid-tit";
+    titleInput.placeholder = "Video Title";
+
+    const linkLabel = document.createElement("label");
+    linkLabel.textContent = "Video Link";
+    linkLabel.htmlFor = "vid-link";
+    linkLabel.className = "sub-tit";
+
+    const linkInput = document.createElement("input");
+    linkInput.className = "sub-data";
+    linkInput.name = "vid-link";
+    linkInput.id = "vid-link";
+    linkInput.placeholder = "Video Link";
+
+    wrapper.appendChild(titleLabel);
+    wrapper.appendChild(titleInput);
+    wrapper.appendChild(linkLabel);
+    wrapper.appendChild(linkInput);
+
+    const container = document.getElementById("content-area");
+    container.appendChild(wrapper);
+    console.log("video section added");
+}
+=======
 import { db, setDoc, doc } from './firebase-config.js';
 
 
@@ -44,3 +153,4 @@ submit.addEventListener("click",()=>{
 async function upload(ob){
     await setDoc(doc(db, ob.subject, ob.id), ob);
 }
+>>>>>>> dc1c9168631eac013eb488df9fd1f6eda17f1dbd
