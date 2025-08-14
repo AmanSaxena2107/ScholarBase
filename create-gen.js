@@ -2,34 +2,36 @@ function genTextSect(){
     const section = document.createElement("section");
     section.classList.add("Section", "text");
 
-    const titleLable = document.createElement("label");
-    titleLable.textContent = "Subsection Title";
-    titleLable.for = "sub-tit";
-    titleLable.className = "sub-label";
+    const titleLabel = document.createElement("label");
+    titleLabel.textContent = "Subsection Title";
+    titleLabel.htmlFor = "sub-tit";
+    titleLabel.className = "sub-label";
+    
     const titleInput = document.createElement("input");
     titleInput.className = "sub-tit";
     titleInput.name = "sub-tit";
-    titleInput.id = "sub-tit";
     titleInput.placeholder = "Subsection Title";
 
-    section.appendChild(titleLable);
-    section.appendChild(titleInput);
-
-    const desclabel = document.createElement("label");
-    desclabel.textContent = "Subsection Content";
-    desclabel.for = "sub-desc";
-    desclabel.className = "sub-label";
+    const descLabel = document.createElement("label");
+    descLabel.textContent = "Subsection Content";
+    descLabel.htmlFor = "sub-desc";
+    descLabel.className = "sub-label";
+    
     const descContent = document.createElement("textarea");
     descContent.name = "sub-desc";
-    descContent.id = "sub-desc";
     descContent.className = "sub-content";
+    descContent.placeholder = "Subsection Content";
 
-    section.appendChild(desclabel);
+    section.appendChild(titleLabel);
+    section.appendChild(titleInput);
+    section.appendChild(descLabel);
     section.appendChild(descContent);
 
-    const form = document.querySelector("div");
-    const button = document.querySelector("button");
-    form.insertBefore(section, button);
+    // Simply append to content-area
+    const contentArea = document.getElementById("content-area");
+    contentArea.appendChild(section);
+    
+    console.log("text section added");
 }
 
 function genImgSect(){
@@ -38,22 +40,22 @@ function genImgSect(){
 
     const titleLabel = document.createElement("label");
     titleLabel.textContent = "Image Title";
-    titleLabel.for = "img-tit";
+    titleLabel.htmlFor = "img-tit";
     titleLabel.className = "sub-label";
+    
     const titleInput = document.createElement("input");
     titleInput.className = "sub-tit";
     titleInput.name = "img-tit";
-    titleInput.id = "img-tit";
     titleInput.placeholder = "Image Title";
 
     const linkLabel = document.createElement("label");
     linkLabel.textContent = "Image Link";
-    linkLabel.for = "img-link";
+    linkLabel.htmlFor = "img-link";
     linkLabel.className = "sub-label";
+    
     const linkInput = document.createElement("input");
     linkInput.className = "sub-content";
     linkInput.name = "img-link";
-    linkInput.id = "img-link";
     linkInput.placeholder = "Image Link";
 
     section.appendChild(titleLabel);
@@ -61,9 +63,11 @@ function genImgSect(){
     section.appendChild(linkLabel);
     section.appendChild(linkInput);
 
-    const form = document.querySelector("div");
-    const button = document.querySelector("button");
-    form.insertBefore(section, button);
+    // Simply append to content-area
+    const contentArea = document.getElementById("content-area");
+    contentArea.appendChild(section);
+    
+    console.log("image section added");
 }
 
 function genVidSect(){
@@ -72,22 +76,22 @@ function genVidSect(){
 
     const titleLabel = document.createElement("label");
     titleLabel.textContent = "Video Title";
-    titleLabel.for = "vid-tit";
+    titleLabel.htmlFor = "vid-tit";
     titleLabel.className = "sub-label";
+    
     const titleInput = document.createElement("input");
     titleInput.className = "sub-tit";
     titleInput.name = "vid-tit";
-    titleInput.id = "vid-tit";
     titleInput.placeholder = "Video Title";
 
     const linkLabel = document.createElement("label");
     linkLabel.textContent = "Video Link";
-    linkLabel.for = "vid-link";
+    linkLabel.htmlFor = "vid-link";
     linkLabel.className = "sub-label";
+    
     const linkInput = document.createElement("input");
     linkInput.className = "sub-content";
     linkInput.name = "vid-link";
-    linkInput.id = "vid-link";
     linkInput.placeholder = "Video Link";
 
     section.appendChild(titleLabel);
@@ -95,7 +99,9 @@ function genVidSect(){
     section.appendChild(linkLabel);
     section.appendChild(linkInput);
 
-    const form = document.querySelector("div");
-    const button = document.querySelector("button");
-    form.insertBefore(section, button);
+    // Simply append to content-area
+    const contentArea = document.getElementById("content-area");
+    contentArea.appendChild(section);
+    
+    console.log("video section added");
 }

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 function genTextSect() {
     const wrapper = document.createElement("div");
     wrapper.className = "subsection-wrapper";
@@ -106,7 +106,6 @@ function genVidSect() {
     container.appendChild(wrapper);
     console.log("video section added");
 }
-=======
 import { db, setDoc, doc } from './firebase-config.js';
 
 
@@ -153,4 +152,4 @@ submit.addEventListener("click",()=>{
 async function upload(ob){
     await setDoc(doc(db, ob.subject, ob.id), ob);
 }
->>>>>>> dc1c9168631eac013eb488df9fd1f6eda17f1dbd
+
